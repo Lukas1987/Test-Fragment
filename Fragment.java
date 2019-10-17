@@ -1,72 +1,91 @@
-package sk.itsovy.mati.fragment;
+package sk.itsovy.mati.projectfragment;
 
 public class Fragment {
-    private int numerator;
-    private int demoninator;
-}
 
-    public void Fragment(int numerator, int demoninator){
-    if(demoninator ==0);
-        denominator = 1;
-    this.numerator = numerator;
-    this.demoninator = demoninator;
-}
-    public Fragment(Fragment otherFragment){
-    numerator = otherFragment.getNumerator();
-    demoninator = otherFragment.getDenominator();
-}
-    public int getNumerator() (return numerator;)
+        private int numerator;
+        private int denominator;
 
-    public void setNumberator(int numerator) (this.numerator = numerator;)
+        public Fragment(int numerator, int denominator){
+            if (denominator ==0);
+            denominator = 1;
+            this.numerator = numerator;
+            this.denominator = denominator;
+        }
+        public Fragment (Fragment otherFragment){
+            numerator=otherFragment.getNumerator();
+            denominator=otherFragment.getDenominator();
+        }
 
-    public double getRealValue(){
+        public int getNumerator() {
+            return numerator;
+        }
 
-}
-    public void changeToBasicChange(){
-    int commonDivisor=getTheLargestCommonDivision();
-    while (numerator % commonDivisor != || demoninator%commonDivisor != 0){
-        commonDivisor--;
-    }
+        public void setNumerator(int numerator) {
+            this.numerator = numerator;
+        }
 
-}
-    public void reverse(){
-    int temp=numerator;
-    numerator=demoninator;
-    demoninator=temp;
-}
+        public void setDenominator(int denominator) {
+            this.denominator = denominator;
+        }
 
-    public void opposite(){
+        public int getDenominator() {
+            return denominator;
+        }
 
-    }
-    public Fragment copy(){
-    Fragment newFragment=new Fragment()
-    return null;
+        public void changeToBasicShape(){
+            int commonDividisor=getTheLargestCommonDivisor();
+            numerator=numerator/commonDividisor;
+            denominator=denominator/commonDividisor;
+        }
+        public void extendFragment(int value){
+            if (value !=0);
+            numerator*=value;
+            denominator*=value;
 
-    }
+        }
+        public double getRealValue(){
+            return (double)numerator/denominator;
+        }
 
-    private int getTheLargestCommonDivision(){//
-    // if numerator < demoninator
-        int absNumerator = Math.abs(numerator);
-        int absdenominator = Math.abs(demoninator);
+        public void reverse(){
+            int temp=numerator;
+            numerator=denominator;
+            denominator=temp;
+        }
+        public void opposite (){
+            numerator*=-1;
+        }
 
-    int min= numerator<absdemoninator?absnumerator:absdemoninator;
-    while (absNumerator % commonDivisor !=0  || absdenominator%commonDivisor != 0)
-        commonDivisor--;
+        public Fragment copy(){
+            Fragment newFragment=new Fragment(numerator, denominator);
+            return newFragment;
+        }
+        private int getTheLargestCommonDivisor(){
+            int absNumerator=Math.abs(numerator);
+            int absDemoninator=Math.abs(denominator);
 
-    }
-
-    return commonDivisor;
+            int commonDivisor=absNumerator<absDemoninator?absNumerator:absDemoninator;
+            while (absNumerator % commonDivisor != 0 ││ absDemoninator%commonDivisor != 0){
+                commonDivisor--;
             }
-            public boolean isFragmentinBasicChange(){
-    if (getTheLargeCommonDivisor()==1){
-        return true;
-        else
-            return false;
+            return commonDivisor;
         }
-        }
-        @Override
-        public String toString(){
-    return numerator" / " + denominator;
+        public boolean isFrameInBasicShape(){
+            if (getTheLargestCommonDivisor()==1){
+                return true;
+            }
+            else {
+                return false;
+            }
+            @Override
+                    public String toString(){
+                return numerator +" / "+denominator;
+            }
+
+            public MixedNumber getMixedNumber(){
+                int value = numerator/denominator;
+                Fragment f=new Fragment(numerator%denominator,denominator );
+                return new MixedNumber(value,f);
         }
 
-
+}

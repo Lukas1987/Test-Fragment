@@ -18,26 +18,26 @@ public class Fragment {
 
         public int getNumerator() {
             return numerator;
-        }
+        } //dostať čitateľa
 
         public void setNumerator(int numerator) {
             this.numerator = numerator;
-        }
-
-        public void setDenominator(int denominator) {
-            this.denominator = denominator;
-        }
+        } //nastaviť čitatela
 
         public int getDenominator() {
-            return denominator;
-        }
+        return denominator;
+    } // získať menovateľ
 
-        public void changeToBasicShape(){
+        public void setDenominator(int denominator) {
+        this.denominator = denominator;
+    } // nastaviť menovateľ
+
+        public void changeToBasicShape(){ // zmena základného tvaru
             int commonDividisor=getTheLargestCommonDivisor();
             numerator=numerator/commonDividisor;
             denominator=denominator/commonDividisor;
         }
-        public void extendFragment(int value){
+        public void extendFragment(int value){ // predĺžiť fragment
             if (value !=0);
             numerator*=value;
             denominator*=value;
@@ -45,16 +45,16 @@ public class Fragment {
         }
         public double getRealValue(){
             return (double)numerator/denominator;
-        }
+        } // získať skutočnú hodnotu
 
-        public void reverse(){
+        public void reverse(){  //zvrátiť
             int temp=numerator;
             numerator=denominator;
             denominator=temp;
         }
         public void opposite (){
             numerator*=-1;
-        }
+        } // opak
 
         public Fragment copy(){
             Fragment newFragment=new Fragment(numerator, denominator);
@@ -87,5 +87,53 @@ public class Fragment {
                 Fragment f=new Fragment(numerator%denominator,denominator );
                 return new MixedNumber(value,f);
         }
+            int fractionParts = 0; // zlomkove casti
+            int numerator = 0;
+            int denominator = -2;
+            public int[] reducedFraction (int numerator, int denominator)
+            {
+                int GCD = numerator;
+                int tempN = numerator;
+                int tempD = denominator;
+                int[] fractionParts = {0, numerator, denominator};
+                if (numerator == 0){
+                    return fractionParts;
+                }
+                GCD = (numerator < 0) ? -numerator: numerator;
+                tempD = (denominator < 0) ? -denominator: denominator;
+                while (GCD != tempD){
+                    if (GCD > tempD)
+                        GCD -= tempD;
+                    else
+                        tempD-= GCD;
+                }
+                fractionParts [1] /= GCD;
+                fractionParts [2] /= GCD;
+                tempN = (fractionParts [1] < 0) ? -fractionParts [1]: fractionParts [1];
+                tempD = (fractionParts [2] < 0) ? -fractionParts [2]: fractionParts [2];
+                if (tempN < tempD)
+            }
+            return fractionParts;
+            }
+            fractionParts [0] = fractionParts [1] / fractionParts [2];
+            fractionParts [1] = fractionParts [1] - (fractionParts [1] / fractionParts [2]) * fractionParts [2];
+            if (fractionParts [1] < 0 && fractionParts [2] < 0){
+                fractionParts [1] = (fractionParts [1] < 0) ? -fractionParts [1]:fractionParts [1];
+
+                fractionParts [2] = (fractionParts [2] < 0) ? -fractionParts [2]: fractionParts [2];
+            }
+            return fractionParts;
+    }
+    public void display(){
+    if ((reducedFraction (numerator, denominator) [1] == 0)
+        c.print (reducedFraction (numerator, denominator) [0]);)
+
+        else if (reducedFraction (numerator, denominator) [0] == 0)
+            c.print (reducedFraction (numerator, denominator) [1] + "/" + reducedFraction (numerator, denominator) [2]);
+        else
+            c.print(reducedFraction (numerator, denominator) [0] + " " + reducedFraction (numerator, denominator) [1] + "/" + reducedFraction (numerator, denominator) [2]);
+    }
 
 }
+
+
